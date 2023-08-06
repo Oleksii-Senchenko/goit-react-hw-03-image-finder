@@ -1,10 +1,11 @@
 import React from 'react';
 import { Dna } from 'react-loader-spinner';
-import css from './Loader.module.css'
+
+import { LoaderPlase } from './Loader.styled';
 
 function Loader() {
   return (
-    <div className={css.loaderwrapper}>
+    <LoaderPlase>
       <Dna
         visible={true}
         height="80"
@@ -13,7 +14,7 @@ function Loader() {
         wrapperStyle={{}}
         wrapperClass="dna-wrapper"
       />
-    </div>
+    </LoaderPlase>
   );
 }
 

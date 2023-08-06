@@ -1,5 +1,11 @@
 import React, { Component } from 'react';
-import css from './Searchbar.module.css';
+
+import {
+  Header,
+  Form,
+  SearchFormButton,
+  SearchFormInput,
+} from './Searchbar.styled';
 
 class Searchbar extends Component {
   state = {
@@ -17,35 +23,29 @@ class Searchbar extends Component {
   onSubmit = e => {
     const { searchQuery } = this.state;
     const { onChange } = this.props;
-
     e.preventDefault();
-
-    if (!searchQuery) {
-      return;
-    }
 
     onChange(searchQuery);
   };
 
   render() {
     return (
-      <header className={css.Searchbar}>
-        <form className={css.SearchForm} onSubmit={this.onSubmit}>
-          <button type="submit" className={css.SearchFormButton}>
-            <span className="button-label">Search</span>
-          </button>
+      <Header>
+        <Form onSubmit={this.onSubmit}>
+          <SearchFormButton type="submit">
+            <span>Search</span>
+          </SearchFormButton>
 
-          <input
-            className={css.SearchFormInput}
+          <SearchFormInput
             type="text"
             autoComplete="off"
             autoFocus
-            value={this.state.searchQuery}
+            value={this.state.value}
             onChange={this.handleChange}
             placeholder="Search images and photos"
           />
-        </form>
-      </header>
+        </Form>
+      </Header>
     );
   }
 }

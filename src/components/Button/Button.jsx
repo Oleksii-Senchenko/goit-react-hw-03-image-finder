@@ -1,12 +1,8 @@
 import React from 'react';
-import css from './Button.module.css';
 
+import { LoadMore } from './Button.styled';
 function Button({ loadMore }) {
-  return (
-    <button className={css.Button} onClick={loadMore}>
-      Button
-    </button>
-  );
+  return <LoadMore onClick={loadMore}>Button</LoadMore>;
 }
 
 export default Button;

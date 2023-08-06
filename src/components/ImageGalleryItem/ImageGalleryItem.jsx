@@ -1,21 +1,24 @@
 import React from 'react';
 
-import css from './ImageGalleryItem.module.css';
+import { ImageItem, ImageItemImage } from './ImageGalleryItem.styled';
+
 function ImageGalleryItem({
+  id,
   webformatURL,
   largeImageURL,
   tags,
   toogleModal,
   getLargeImage,
 }) {
-  const photoTransfer = () => {
+  const photoTranfer = () => {
     getLargeImage(largeImageURL);
-    toogleModal();
+    toogleModal()
   };
+
   return (
-    <li className={css.ImageGalleryItem} onClick={photoTransfer}>
-      <img src={webformatURL} alt={tags} />
-    </li>
+    <ImageItem onClick={photoTranfer}>
+      <ImageItemImage src={webformatURL} tag={tags} />
+    </ImageItem>
   );
 }
 

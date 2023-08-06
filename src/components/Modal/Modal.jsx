@@ -1,15 +1,22 @@
 import React, { Component } from 'react';
 
-import css from './Modal.module.css';
+import { BackDrop } from './Modal.styled';
+import { MadalFace } from './Modal.styled';
 
 class Modal extends Component {
   componentDidMount() {
-    window.addEventListener('keydown', this.closeOnEsc);
+    window.addEventListener('keydown', this.colseonEsc);
   }
 
   componentWillUnmount() {
-    window.removeEventListener('keydown', this.closeOnEsc);
+    window.removeEventListener('keydown', this.colseonEsc);
   }
+
+  colseonEsc = ({ code }) => {
+    if (code === 'Escape') {
+      this.props.toogleModal();
+    }
+  };
 
   closeOnClickBackDrop = e => {
     if (e.currentTarget === e.target) {
@@ -17,21 +24,14 @@ class Modal extends Component {
     }
   };
 
-  closeOnEsc = ({ code }) => {
-    if (code === 'Escape') {
-      this.props.toogleModal();
-    }
-  };
-
   render() {
-    // const { toogleModal } = this.props;
-
+    const { largeImage } = this.props;
     return (
-      <div className={css.Overlay} onClick={this.closeOnClickBackDrop}>
-        <div className={css.Modal}>
-          <img src={this.props.largeImage} alt="" />
-        </div>
-      </div>
+      <BackDrop onClick={this.closeOnClickBackDrop}>
+        <MadalFace>
+          <img src={largeImage} alt="" />
+        </MadalFace>
+      </BackDrop>
     );
   }
 }

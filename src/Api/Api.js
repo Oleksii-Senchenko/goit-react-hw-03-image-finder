@@ -10,12 +10,10 @@ axios.defaults.params = {
     orientation: 'horizontal',
     per_page: 12
 }
-
-const getImages = async (searchQuery, page) => {
+const getImage = async (searchQuery, page) => {
 
     const { data } = await axios.get(`?q=${searchQuery}&page=${page}`)
-
     return data
 }
+export default getImage;
 
-export default getImages
